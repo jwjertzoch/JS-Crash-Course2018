@@ -1,0 +1,35 @@
+# POST http://localhost:3000/visitor HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "Klaus"
+# }
+
+GET http://localhost:3000/visitor/all
+
+# POST http://localhost:3000/toilet HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "Turmstraße",
+#     "location": "Berlin"
+# }
+
+# POST http://localhost:3000/comment HTTP/1.1
+# content-type: application/json
+
+# {
+#     "title": "Dirty",
+#     "description": "Would not visit again",
+#     "toilet": "5bec4b0ddc58b421ad9bbcfe",
+#     "commentedBy": "5bec4ab4dc58b421ad9bbcfb"
+# }
+
+# PUT http://localhost:3000/comment/rating HTTP/1.1
+# content-type: application/json
+
+# {
+#     "visitorId": "5bec4acadc58b421ad9bbcfd",
+#     "commentId": "5bec4bbedc58b421ad9bbcff",
+#     "value": 1
+# }
