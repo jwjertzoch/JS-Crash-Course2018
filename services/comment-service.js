@@ -1,5 +1,5 @@
-const CommentModel = require('../models/comment')
-const VisitorModel = require('../models/visitor')
+const CommentModel = require('../models/comments')
+const VisitorModel = require('../models/visitors')
 
 async function rating({ visitorId, commentId, value }) {
     const visitor = await VisitorModel.findOne({ _id: visitorId })
@@ -21,7 +21,7 @@ async function add(visitor) {
 }
 
 async function del(_id) {
-    return CommentModel.remove({ _id })
+    return CommentModel.deleteOne({ _id })
 }
 
 async function find(_id) {

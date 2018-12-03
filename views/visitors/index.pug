@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+    h2.The number of visitors is #{visitors.length}
+    ul
+      each visitor in visitors
+        li #{visitor.name}

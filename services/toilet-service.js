@@ -1,4 +1,4 @@
-const ToiletModel = require('../models/toilet')
+const ToiletModel = require('../models/toilets')
 
 async function findAll() {
     return ToiletModel.find()
@@ -9,7 +9,7 @@ async function add(toilet) {
 }
 
 async function del(_id) {
-    return ToiletModel.remove({ _id })
+    return ToiletModel.deleteOne({ _id })
 }
 
 async function find(_id) {

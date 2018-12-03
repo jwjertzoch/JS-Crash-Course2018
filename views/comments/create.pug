@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+
+  h1 Create a new comment
+  form(method='POST' action='/comment')
+      .form-group
+          label(for='comment-name') Title:
+          input#comment-title.form-control(placeholder='Title', name='title')
+      .form-group
+          label(for='comment-description') Description:
+          input#comment-description.form-control(placeholder='Description', name='description')
+      button.btn.btn-primary(type='submit') Create

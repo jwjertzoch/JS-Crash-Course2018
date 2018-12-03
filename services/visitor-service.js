@@ -1,4 +1,4 @@
-const VisitorModel = require('../models/visitor')
+const VisitorModel = require('../models/visitors')
 
 async function findAll() {
     return VisitorModel.find()
@@ -9,7 +9,7 @@ async function add(visitor) {
 }
 
 async function del(_id) {
-    return VisitorModel.remove({ _id })
+    return VisitorModel.deleteOne({ _id })
 }
 
 async function find(_id) {

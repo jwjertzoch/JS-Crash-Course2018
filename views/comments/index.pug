@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+    h2.The number of comments is #{comments.length}
+    ul
+      each comment in comments
+        li #{comment.title}, #{comment.description}

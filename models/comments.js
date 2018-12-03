@@ -1,19 +1,27 @@
 const mongoose = require('mongoose')
 
 const CommentSchema = new mongoose.Schema({
-    title: String,
-    description: String,
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
     rating: {
         type: Number,
         default: 0
     },
     toilet: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Toilet'
+        ref: 'Toilet',
+        required: true
     },
     commentedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Visitor'
+        ref: 'Visitor',
+        required: true
     },
     voters: [{
         type: mongoose.Schema.Types.ObjectId,

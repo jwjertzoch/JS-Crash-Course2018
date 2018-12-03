@@ -5,7 +5,7 @@
 #     "name": "Klaus"
 # }
 
-GET http://localhost:3000/visitor/all
+# GET http://localhost:3000/visitor/all
 
 # POST http://localhost:3000/toilet HTTP/1.1
 # content-type: application/json
@@ -14,6 +14,9 @@ GET http://localhost:3000/visitor/all
 #     "name": "Turmstraße",
 #     "location": "Berlin"
 # }
+
+DELETE http://localhost:3000/toilet/5bf2630e14c72cf75988fb22
+
 
 # POST http://localhost:3000/comment HTTP/1.1
 # content-type: application/json

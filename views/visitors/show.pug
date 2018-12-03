@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+
+  p Hello #{visitor.name}!
+
+  h1 Create a new toilet
+  form(method='POST' action='/toilet')
+      .form-group
+          label(for='name') Name:
+          input#name.form-control(placeholder='name', name='name')
+      .form-group
+          label(for='location') Location:
+          input#location.form-control(placeholder='location', name='location')
+      button.btn.btn-primary(type='submit') Create
+
+
+  //- h3 Choose a Toilet
+  //-   div
+  //-     form(method='POST' action='/toilets')
+  //-       select(name='toilet')
+  //-         each toilet in data.toilets
+  //-           option(value="#{toilet._id}") #{toilet.name}
+  //-       input(type='submit', value='Submit')
+

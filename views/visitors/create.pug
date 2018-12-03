@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+
+  h1 Create a new visitor
+  form(method='POST' action='/visitor')
+    .form-group
+        label(for='name') Name:
+        input#name.form-control(placeholder='name', name='name')
+    button.btn.btn-primary(type='submit') Create
+
