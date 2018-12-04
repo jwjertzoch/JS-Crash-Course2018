@@ -2,10 +2,11 @@ extends ../layout
 
 block content
 
-  h1 Create a new visitor
+  h1 Hello! You are new here?
+  h2 Create a visitor
   form(method='POST' action='/visitor')
     .form-group
         label(for='name') Name:
         input#name.form-control(placeholder='name', name='name')
-    button.btn.btn-primary(type='submit') Create
+    button(class="submit" type='submit') Send
 

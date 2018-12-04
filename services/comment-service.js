@@ -1,5 +1,5 @@
-const CommentModel = require('../models/comments')
-const VisitorModel = require('../models/visitors')
+const CommentModel = require('../models/comment')
+const VisitorModel = require('../models/visitor')
 
 async function rating({ visitorId, commentId, value }) {
     const visitor = await VisitorModel.findOne({ _id: visitorId })

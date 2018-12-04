@@ -36,8 +36,10 @@ app.get('/visitor/all', async (req, res) => {
 })
 
 app.get('/visitor/:id', async (req, res) => {
-    const visitor = await VisitorService.find(req.params.id)
-    res.render('visitors/show', { visitor })
+    const data = {}
+    data.visitor = await VisitorService.find(req.params.id)
+    data.toilets = await ToiletService.findAll()
+    res.render('visitors/show', { data })
 })
 
 app.get('/visitor/:id/json', async (req, res) => {
@@ -82,6 +84,13 @@ app.get('/toilet/:id', async (req, res) => {
     res.render ('toilets/show', { data: toilet })
 })
 
+app.get('/toilet/:toiletId/visitor/:visitorId', async (req, res) => {
+    const data = {}
+    data.visitor = await VisitorService.find(req.params.visitorId)
+    data.toilet = await ToiletService.find(req.params.toiletId)
+    res.render ('toilets/show', { data })
+})
+
 app.get('/toilet/:id/json', async (req, res) => {
     const toilet = await ToiletService.find(req.params.id)
     if (!toilet) res.status(404)
@@ -89,16 +98,9 @@ app.get('/toilet/:id/json', async (req, res) => {
   })
 
 app.post('/toilet', async (req, res) => {
+    const visitorId = req.body.visitorId
     const toilet = await ToiletService.add(req.body)
-    res.redirect(`/toilet/${ toilet._id }`)
-})
-
-app.get('toilet-visit/:visitorId', async (req, res) => {
-    data = {}
-    data.visitors = await VisitorService.findAll(visitors)
-    data.toilets = await ToiletService.findAll(toilets)
-    data.comments = await CommentService.findAll(comments)
-    res.render('visitor/toilet-visit', { data })
+    res.redirect(`/toilet/${ toilet._id }/visitor/${ visitorId }`)
 })
 
 app.delete('/toilet/:id', async (req, res) => {
@@ -135,18 +137,12 @@ app.get('/comment/:id/json', async (req, res) => {
 
 app.post('/comment', async (req, res) => {
     const comment = await CommentService.add(req.body)
-    res.send(comment)
-})
-
-app.put('/comment/rating', async (req, res) => {
-    const comment = await CommentService.rating(req.body)
-    res.send(comment)
+    res.render('comments/show')
 })
 
 app.delete('/comment/:id', async (req, res) => {
     const comment = await CommentService.del(req.params.id)
     res.send(comment)
 })
-
 
 module.exports = app

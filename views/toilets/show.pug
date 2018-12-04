@@ -2,12 +2,19 @@ extends ../layout
 
 block content
 
-  h1 Create a new comment
+  h1 Hi, #{ data.visitor.name }!
+  h2 Feel free to add a comment for toilet #{ data.toilet.name } in #{ data.toilet.location }
+
   form(method='POST' action='/comment')
+      input(type="hidden", name="commentedBy", value=`${data.visitor._id}`)
+      input(type="hidden", name="toilet", value=`${data.toilet._id}`)
       .form-group
           label(for='comment-name') Title:
           input#comment-title.form-control(placeholder='Title', name='title')
       .form-group
           label(for='comment-description') Description:
           input#comment-description.form-control(placeholder='Description', name='description')
-      button.btn.btn-primary(type='submit') Create
+      .form-group
+          button(class="increment-up") +
+          button(class="increment-down") -
+      button(class="submit" type='submit') Send

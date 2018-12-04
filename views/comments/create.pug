@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 
-  h1 Create a new comment
+  h2 Create a new comment
   form(method='POST' action='/comment')
       .form-group
           label(for='comment-name') Title:
@@ -10,4 +10,4 @@ block content
       .form-group
           label(for='comment-description') Description:
           input#comment-description.form-control(placeholder='Description', name='description')
-      button.btn.btn-primary(type='submit') Create
+      button(class="submit" type='submit') Create

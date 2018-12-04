@@ -1,4 +1,4 @@
-const ToiletModel = require('../models/toilets')
+const ToiletModel = require('../models/toilet')
 
 async function findAll() {
     return ToiletModel.find()

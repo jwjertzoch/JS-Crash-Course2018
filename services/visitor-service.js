@@ -1,4 +1,4 @@
-const VisitorModel = require('../models/visitors')
+const VisitorModel = require('../models/visitor')
 
 async function findAll() {
     return VisitorModel.find()
