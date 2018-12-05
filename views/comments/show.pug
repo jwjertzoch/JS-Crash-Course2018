@@ -2,4 +2,8 @@ extends ../layout
 
 block content
 
-  p(class="headline") Thank you for your visit!
+  h2.headline Thanks for visiting toilet #{ data.toilet.name } in #{ data.toilet.location }!
+
+  p #{ comment.title }
+  p #{ comment.description }
+  p Rating: #{ comment.rating }

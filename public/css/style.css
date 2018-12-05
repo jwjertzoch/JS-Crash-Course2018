@@ -1,3 +1,33 @@
+a {
+  color: gray;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+body {
+  height: 150px;
+  text-align: center;
+  margin: 0;
+}
+
+button {
+  margin-top: 20px;
+}
+
+button:hover{
+  background-color: #e8e80d;
+}
+
+footer {
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+}
+
 header {
   border-bottom: dotted 4px black;
   height: 265px;
@@ -17,14 +47,19 @@ header h1 {
   text-align: center;
 }
 
-li {
-  list-style-type: none;
+input {
+  border-radius: 9px;
+  height: 31px;
+  text-align: center;
 }
 
-body {
-  height: 150px;
-  text-align: center;
-  margin: 0;
+label {
+  margin-right: 10px;
+}
+
+li {
+  list-style-type: none;
+  margin-right: 20px;
 }
 
 main {
@@ -46,28 +81,4 @@ main {
   border-radius: 6px;
   height: 30px;
   width: 54px;
-}
-
-label {
-  margin-right: 10px;
-}
-
-input {
-  border-radius: 9px;
-  height: 31px;
-  text-align: center;
-}
-
-button {
-  margin-top: 20px;
-}
-
-footer {
-  background-color: lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    margin: 0 auto;
 }

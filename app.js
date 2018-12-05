@@ -119,6 +119,13 @@ app.get('/comment/all-list', async (req, res) => {
     res.render('data', { data: comments })
   })
 
+app.get('/comment/all-list/visitor/:visitorId', async (req, res) => {
+    const data = {}
+    data.visitorId = req.params.visitorId
+    data.comments = await CommentService.findAll()
+    res.render('comments/index', { data })
+  })
+
 app.get('/comment/all', async (req, res) => {
     const comments = await CommentService.findAll()
     res.send(comments)
@@ -126,7 +133,8 @@ app.get('/comment/all', async (req, res) => {
 
 app.get('/comment/:id', async (req, res) => {
     const comment = await CommentService.find(req.params.id)
-    res.send(comment)
+    // res.send(comment)
+    res.render('comments/show', { comment })
 })
 
 app.get('/comment/:id/json', async (req, res) => {
@@ -135,9 +143,30 @@ app.get('/comment/:id/json', async (req, res) => {
     res.send(comment)
   })
 
+app.get('/comments/:commentId/up-vote/visitor/:visitorId', async (req, res) => {
+    const comment = await CommentService.rating({
+      visitorId: req.params.visitorId,
+      commentId: req.params.commentId,
+      value: 1
+     })
+
+     res.render('comments/show', { comment })
+})
+
+app.get('/comments/:commentId/down-vote/visitor/:visitorId', async (req, res) => {
+    const comment = await CommentService.rating({
+      visitorId: req.params.visitorId,
+      commentId: req.params.commentId,
+      value: -1
+     })
+
+     res.render('comments/show', { comment })
+})
+
 app.post('/comment', async (req, res) => {
     const comment = await CommentService.add(req.body)
-    res.render('comments/show')
+    // res.render('comments/show')
+    res.redirect(`/comment/${comment._id}`)
 })
 
 app.delete('/comment/:id', async (req, res) => {
@@ -146,3 +175,4 @@ app.delete('/comment/:id', async (req, res) => {
 })
 
 module.exports = app
+

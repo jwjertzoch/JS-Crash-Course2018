@@ -22,3 +22,6 @@ block content
       each toilet in data.toilets
         li
           a(href=`/toilet/${toilet._id}/visitor/${data.visitor._id}`) #{ toilet.name }
+
+  h3 Or vote on existing comment
+    a(href=`/comment/all-list/visitor/${ data.visitor._id }`) &nbsp; Show all comments
