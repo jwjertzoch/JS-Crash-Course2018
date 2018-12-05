@@ -6,5 +6,6 @@ block content
       each comment in data.comments
         li
           span(style="display: block;") #{ comment.title }, #{ comment.description }
-          a(href=`/comments/${ comment._id }/up-vote//toilet/${toilet._id}/visitor/${data.visitor._id}` style="display: block;") agree
-          a(href=`/comments/${ comment._id }/down-vote//toilet/${toilet._id}/visitor/${data.visitor._id}` style="display: block;") disagree
+          a(href=`/comments/${ comment._id }/up-vote/visitor/${ data.visitorId }` style="display: block;") agree
+          a(href=`/comments/${ comment._id }/down-vote/visitor/${ data.visitorId }` style="display: block;") disagree
+ç
