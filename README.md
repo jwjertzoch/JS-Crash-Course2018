@@ -4,4 +4,4 @@ Full stack JavaScript app to manage public toilets. This app was created as a pa
 
 ## What this app can do?
 
-Toilet Inspector is a practical and very simple app to manage toilets. You are able to create visitors and toilets and comment on your visit. It is also possible to choose an already existing toilet to add another comment. By voting up or dowm the, rating for the toilet rises or falls. 
+Toilet Inspector is a practical and very simple app to manage toilets. You are able to create visitors and toilets and comment on your visit. It is also possible to choose an already existing toilet to add another comment. By voting up or down, the rating for the toilet rises or falls. 
