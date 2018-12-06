@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h2.The number of toilets is #{ toilets.length }
+    h2 The number of toilets is #{ toilets.length }.
     ul
       each toilet in toilets
         li #{ toilet.name }, #{ toilet.location }

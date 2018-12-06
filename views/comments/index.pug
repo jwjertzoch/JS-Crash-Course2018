@@ -1,10 +1,11 @@
 extends ../layout
 
 block content
-    h2.The number of comments is #{data.comments.length}
+    h2 The number of comments is #{data.comments.length}
     ul
       each comment in data.comments
         li
+          h3(style="display: block;") #{ comment.toilet.name }, #{ comment.toilet.location }
           span(style="display: block;") #{ comment.title }, #{ comment.description }
           a(href=`/comments/${ comment._id }/up-vote/visitor/${ data.visitorId }` style="display: block;") agree
           a(href=`/comments/${ comment._id }/down-vote/visitor/${ data.visitorId }` style="display: block;") disagree

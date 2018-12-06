@@ -14,7 +14,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'))
 
-
 app.get('/', (req, res) => {
     res.render('index')
 })
@@ -103,6 +102,7 @@ app.post('/toilet', async (req, res) => {
     res.redirect(`/toilet/${ toilet._id }/visitor/${ visitorId }`)
 })
 
+
 app.delete('/toilet/:id', async (req, res) => {
     const toilet = await ToiletService.del(req.params.id)
     res.send(toilet)
@@ -132,9 +132,10 @@ app.get('/comment/all', async (req, res) => {
 })
 
 app.get('/comment/:id', async (req, res) => {
-    const comment = await CommentService.find(req.params.id)
-    // res.send(comment)
-    res.render('comments/show', { comment })
+    const data = {}
+    data.comment = await CommentService.find(req.params.id)
+    data.toilet = await ToiletService.find(data.comment.toilet)
+    res.render('comments/show', { data })
 })
 
 app.get('/comment/:id/json', async (req, res) => {
@@ -144,24 +145,23 @@ app.get('/comment/:id/json', async (req, res) => {
   })
 
 app.get('/comments/:commentId/up-vote/visitor/:visitorId', async (req, res) => {
-    const comment = await CommentService.rating({
-      visitorId: req.params.visitorId,
-      commentId: req.params.commentId,
-      value: 1
-     })
-
-     res.render('comments/show', { comment })
+    await votingHelper(req, res, 1)
 })
 
 app.get('/comments/:commentId/down-vote/visitor/:visitorId', async (req, res) => {
-    const comment = await CommentService.rating({
-      visitorId: req.params.visitorId,
-      commentId: req.params.commentId,
-      value: -1
-     })
-
-     res.render('comments/show', { comment })
+    await votingHelper(req, res, -1)
 })
+
+async function votingHelper(req, res, value) {
+  const data = {}
+  data.comment = await CommentService.rating({
+    visitorId: req.params.visitorId,
+    commentId: req.params.commentId,
+    value
+    })
+  data.toilet = await ToiletService.find(data.comment.toilet)
+  res.render('comments/show', { data })
+}
 
 app.post('/comment', async (req, res) => {
     const comment = await CommentService.add(req.body)
@@ -175,4 +175,3 @@ app.delete('/comment/:id', async (req, res) => {
 })
 
 module.exports = app
-

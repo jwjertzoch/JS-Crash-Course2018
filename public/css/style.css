@@ -4,6 +4,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color:#e8e80d;
+}
+
 body {
   height: 150px;
   text-align: center;

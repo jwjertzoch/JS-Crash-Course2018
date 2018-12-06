@@ -13,7 +13,7 @@ async function rating({ visitorId, commentId, value }) {
 }
 
 async function findAll() {
-    return CommentModel.find()
+    return CommentModel.find().populate('toilet')
 }
 
 async function add(visitor) {
